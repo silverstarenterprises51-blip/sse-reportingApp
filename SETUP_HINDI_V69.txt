@@ -1,0 +1,21 @@
+SSE Reporting App V69 — Attendance Date + Location Stamp
+
+WHAT CHANGED
+- Attendance module stamps the attendance photo inside the app (the uploaded original is not separately edited by ChatGPT).
+- Stamp includes capture date/time, readable place/address when reverse-geocoding is available, GPS coordinates, and reported GPS accuracy.
+- Address lookup uses OpenStreetMap Nominatim. If it is unavailable/offline, attendance still stamps date/time and coordinates.
+- The app continues using the V68 Firebase Storage photo upload flow and Firestore size guard.
+
+INSTALL
+1. Back up your current GitHub Pages repository and Firebase data first.
+2. Extract this ZIP.
+3. Replace the repository's index.html with this package's index.html and commit the change.
+4. Keep firebase.json, storage.rules, functions/ and firebase-messaging-sw.js only if you already use/need those deployment components; do not blindly overwrite existing project configuration.
+5. Ensure Firebase Storage is enabled and rules are configured for authenticated users before testing photo uploads.
+6. Open the site, refresh/reopen it, sign in, open Attendance, choose/take a selfie, press Get Location, allow location permission, confirm the preview shows date/time and location, then submit a test attendance.
+
+IMPORTANT
+- A browser cannot guarantee a human-readable address if the phone has no internet or the geocoding service is unavailable. Coordinates are used as a fallback.
+- GPS permission is required. Location accuracy depends on the phone and surroundings.
+- This package was checked for ZIP integrity and JavaScript syntax. It has not been tested against your live Firebase project, account permissions, or production deployment.
+- Keep a backup before replacing files. Do not delete old attendance records.
